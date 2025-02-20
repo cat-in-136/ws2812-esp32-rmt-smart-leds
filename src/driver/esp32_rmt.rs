@@ -196,7 +196,7 @@ impl<'d> Ws2812Esp32RmtDriver<'d> {
     ) -> Result<Self, Ws2812Esp32RmtDriverError> {
         #[cfg(target_vendor = "espressif")]
         {
-            let config = TransmitConfig::new().clock_divider(1);
+            let config = TransmitConfig::new().clock_divider(1).mem_block_num(2);
             let tx = TxRmtDriver::new(channel, pin, &config)?;
 
             let clock_hz = tx.counter_clock()?;
